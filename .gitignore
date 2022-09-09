@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # actions secrets
-.actions.txt
+*.actions.txt
