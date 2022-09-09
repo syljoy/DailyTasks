@@ -1,0 +1,38 @@
+# workflows 工作流名称
+name: run zepp life step
+# 工作流程的触发器
+on:
+  schedule:
+  #  运行时间 11:00 - 19:00运行
+  - cron:  '0 11 * * *'
+  # 可以手动运行
+  workflow_dispatch:
+
+# 工作流程中运行的所有作业组合在一起
+jobs:
+
+  send_message:
+    # 在最新版本的ubuntu运行器上运行
+    runs-on: ubuntu-latest
+    # 作业名称
+    name: Modify Number Steps
+    # 作业的所有步骤
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+      with:
+        ref: main
+
+    - name: sender
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        architecture: 'x64'
+    - run: pip install -r ./zepp_life_step_requirements.txt && python ./zepp_life_step.py
+
+    env:
+      STEP_USERS: ${{ secrets.STEP_USERS }}
+      STEP_PASSWD: ${{ secrets.STEP_PASSWD }}
+      STEP_NUMBER: ${{ secrets.STEP_NUMBER }}
+
+

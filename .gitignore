@@ -128,5 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# actions secrets
+# 不上传actions secrets
 *.actions.txt
