@@ -3,8 +3,8 @@ name: run zepp life step
 # 工作流程的触发器
 on:
   schedule:
-  #  运行时间 11:00 - 19:00运行
-  - cron:  '0 11 * * *'
+  #  运行时间 9:00 - 17:00运行
+  - cron:  '0 9 * * *'
   # 可以手动运行
   workflow_dispatch:
 
