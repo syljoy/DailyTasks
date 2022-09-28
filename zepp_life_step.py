@@ -91,7 +91,7 @@ def main(user_name, pwd, step_num):
         print("登陆失败！")
         return "login fail!"
 
-    t = get_time()
+    # t = get_time()
 
     app_token = get_app_token(login_token)
 
@@ -104,7 +104,7 @@ def main(user_name, pwd, step_num):
     data_json = re.sub(finddate.findall(data_json)[0], today, str(data_json))
     data_json = re.sub(findstep.findall(data_json)[0], step_num, str(data_json))
 
-    url = f'https://api-mifit-cn.huami.com/v1/data/band_data.json?&t={t}'
+    url = f'https://api-mifit-cn.huami.com/v1/data/band_data.json?&t={int(time.time()*1000)}'
     head = {
         "User-Agent": "MiFit/4.6.0 (iPhone; iOS 14.0.1; Scale/2.00)",
         "apptoken": app_token,
